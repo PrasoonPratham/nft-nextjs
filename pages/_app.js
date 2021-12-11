@@ -1,7 +1,21 @@
-import '../styles/globals.css'
+import { ThirdwebProvider } from "@3rdweb/react";
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
-}
+import "tailwindcss/tailwind.css";
 
-export default MyApp
+const supportedChainIds = [1,4,137];
+const connectors = {
+  injected: {},
+};
+
+const MyApp = ({ Component, pageProps }) => {
+  return (
+     <ThirdwebProvider
+      connectors={connectors}
+      supportedChainIds={supportedChainIds}
+    >
+      <Component {...pageProps} />
+    </ThirdwebProvider>
+  );
+};
+
+export default MyApp;
