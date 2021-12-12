@@ -92,6 +92,7 @@ export default function Home() {
       return;
     }
 
+
     const form = new FormData();
     form.append("address", address);
     form.append("name", values.name);
@@ -141,8 +142,15 @@ export default function Home() {
           <button className="w-full mt-5">
             <ConnectWallet>Connect Metamask</ConnectWallet>
           </button>
+
+          {address ?
+          <button className="w-full rounded px-3 my-2 py-2 border-b-3 border-l-2 shadow-lg bg-blue-600 border-blue-700 text-white">
+            <a href={"https://polygonscan.com/address/" +  address  + "#tokentxnsErc721"} target="_blank">Check Recent Transactions</a>
+            </button>
+             : null}
+            
           <form
-            className="mt-8 space-y-3"
+            className="mt-3 space-y-3"
             action="#"
             method="POST"
             onSubmit={formik.handleSubmit}
@@ -200,7 +208,7 @@ export default function Home() {
                   >
                     <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
                   </svg>
-
+                  
                   {isDragActive ? (
                     <span className="mt-2 text-base leading-normal">
                       Drop the image here ...
@@ -208,10 +216,34 @@ export default function Home() {
                   ) : (
                     <span>
                       Drag and drop some files here, or click to select files
-                    </span>
+                      </span>
+                      
                   )}
+                  
                 </label>
+                
               </div>
+              {file ?
+                
+                <div
+         class="bg-green-200 px-6 py-4 w-full my-4 rounded-md text-lg flex items-center mx-auto "
+         >
+      <svg
+           viewBox="0 0 24 24"
+           class="text-green-600 w-5 h-5 sm:w-5 sm:h-5 mr-3"
+           >
+        <path
+              fill="currentColor"
+              d="M12,0A12,12,0,1,0,24,12,12.014,12.014,0,0,0,12,0Zm6.927,8.2-6.845,9.289a1.011,1.011,0,0,1-1.43.188L5.764,13.769a1,1,0,1,1,1.25-1.562l4.076,3.261,6.227-8.451A1,1,0,1,1,18.927,8.2Z"
+              ></path>
+      </svg>
+      <span class="text-green-800"> Your image has been uploaded. </span>
+    </div>
+                  
+                    
+                    :
+                    null
+                  }
             </div>
             <p className="text-sm text-gray-300">
               <span>File type: jpg,jpeg and other common types of images</span>
@@ -244,3 +276,4 @@ export default function Home() {
     </>
   );
 }
+
