@@ -130,7 +130,7 @@ export default function Home() {
                     name="twitter:description"
                     content="You mint NFTs, I pay for the gas"
                 />
-                <meta name="twitter:image" content="bg.png" />
+                <meta name="twitter:image" content="https://github.com/PrasoonPratham/nft-nextjs/blob/main/public/bg.png" />
             </Head>
 
             <div
